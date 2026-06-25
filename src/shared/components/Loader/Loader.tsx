@@ -7,8 +7,10 @@ import { LoaderProps } from './Loader.types';
 /**
  * Displays a themed loading indicator.
  */
-export function Loader({ fullScreen = false, size = 'large' }: LoaderProps) {
+export function Loader({ fullScreen = false, size = 'large', color }: LoaderProps) {
   const { theme } = useTheme();
+
+  const loaderColor = color ?? theme.colors.primary;
 
   if (fullScreen) {
     return (
@@ -20,10 +22,10 @@ export function Loader({ fullScreen = false, size = 'large' }: LoaderProps) {
           backgroundColor: theme.colors.background,
         }}
       >
-        <ActivityIndicator size={size} color={theme.colors.primary} />
+        <ActivityIndicator size={size} color={loaderColor} />
       </View>
     );
   }
 
-  return <ActivityIndicator size={size} color={theme.colors.primary} />;
+  return <ActivityIndicator size={size} color={loaderColor} />;
 }
