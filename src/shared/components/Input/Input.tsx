@@ -44,7 +44,7 @@ export function Input({
         placeholderTextColor={theme.colors.textSecondary}
         style={[
           {
-            height: 48,
+            minHeight: 48,
             borderWidth: 1,
             borderColor: error ? theme.colors.error : theme.colors.border,
             borderRadius: theme.borderRadius.md,
