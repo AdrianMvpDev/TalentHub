@@ -1,7 +1,7 @@
 import { View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
-import { Input } from '@shared/components';
+import { Input } from '../Input';
 import { useTheme } from '@shared/hooks';
 
 import { SearchInputProps } from './SearchInput.types';

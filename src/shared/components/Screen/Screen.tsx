@@ -1,4 +1,4 @@
-import { View, ScrollView } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { useTheme } from '@shared/hooks';
@@ -17,27 +17,38 @@ export function Screen({
   const { theme } = useTheme();
 
   const containerStyle = {
-    flex: 1,
+    flexGrow: 1,
     backgroundColor: theme.colors.background,
     paddingHorizontal: padding ? theme.spacing.md : 0,
   };
 
-  if (scrollable) {
-    return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: theme.colors.background }}>
+  return (
+    <SafeAreaView
+      style={{
+        flex: 1,
+        backgroundColor: theme.colors.background,
+      }}
+    >
+      {scrollable ? (
         <ScrollView
           contentContainerStyle={[containerStyle, style]}
           showsVerticalScrollIndicator={false}
         >
           {children}
         </ScrollView>
-      </SafeAreaView>
-    );
-  }
-
-  return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: theme.colors.background }}>
-      <View style={[containerStyle, style]}>{children}</View>
+      ) : (
+        <View
+          style={[
+            {
+              flex: 1,
+            },
+            containerStyle,
+            style,
+          ]}
+        >
+          {children}
+        </View>
+      )}
     </SafeAreaView>
   );
 }

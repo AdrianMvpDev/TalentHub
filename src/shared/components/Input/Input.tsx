@@ -1,6 +1,6 @@
 import { TextInput, View } from 'react-native';
 
-import { Text } from '@shared/components';
+import { Text } from '../Text';
 
 import { useTheme } from '@shared/hooks';
 

@@ -1,6 +1,7 @@
 import { View } from 'react-native';
 
-import { Button, Text } from '@shared/components';
+import { Button } from '../Button';
+import { Text } from '../Text';
 
 import { useTheme } from '@shared/hooks';
 

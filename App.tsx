@@ -1,10 +1,10 @@
 import { ThemeProvider } from '@app/providers';
-import { View } from 'react-native';
+import { RootNavigator } from '@app/navigation';
 
 export default function App() {
   return (
     <ThemeProvider>
-      <View />
+      <RootNavigator />
     </ThemeProvider>
   );
 }
