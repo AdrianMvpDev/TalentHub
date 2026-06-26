@@ -8,13 +8,11 @@ import { useJobsStore } from '../store';
  * Jobs listing screen.
  */
 export function JobsScreen() {
-  const { jobs, loading, error, fetchJobs } = useJobsStore();
+  const { loading, error, fetchJobs } = useJobsStore();
 
   useEffect(() => {
     fetchJobs();
   }, [fetchJobs]);
-
-  console.log(jobs);
 
   if (loading) {
     return <Loader fullScreen />;
