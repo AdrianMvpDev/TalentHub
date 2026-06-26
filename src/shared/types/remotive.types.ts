@@ -1,16 +1,12 @@
-import { Category } from './category.types';
 import { Job } from './job.types';
 
 /**
- * Jobs API response.
+ * Remotive jobs response.
  */
 export interface JobsResponse {
   jobs: Job[];
-}
 
-/**
- * Categories API response.
- */
-export interface CategoriesResponse {
-  jobs: Category[];
+  'job-count': number;
+
+  'total-job-count': number;
 }

@@ -8,7 +8,7 @@ class ApiClient {
     const response = await fetch(`${ENV.API_URL}${endpoint}`);
 
     if (!response.ok) {
-      throw new Error('Request failed.');
+      throw new Error(`HTTP ${response.status}`);
     }
 
     return response.json();

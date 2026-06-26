@@ -2,7 +2,9 @@
  * Job category entity.
  */
 export interface Category {
-  id: number;
+  id?: number;
+
   name: string;
-  slug: string;
+
+  slug?: string;
 }

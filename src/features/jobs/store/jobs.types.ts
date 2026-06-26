@@ -1,5 +1,13 @@
+import { Job } from '@shared/types';
+
 export interface JobsState {
+  jobs: Job[];
+
   loading: boolean;
 
-  setLoading: (loading: boolean) => void;
+  error: string | null;
+
+  fetchJobs: () => Promise<void>;
+
+  clearError: () => void;
 }
