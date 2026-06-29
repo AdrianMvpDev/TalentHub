@@ -6,17 +6,29 @@ import { FavoritesState } from './favorites.types';
 
 /**
  * Global favorite jobs state.
+ *
+ * Stores only job identifiers in order to:
+ * - avoid duplicated job objects.
+ * - reduce persisted storage size.
+ * - allow jobs to be resolved from the jobs store.
+ *
  * Data is persisted using AsyncStorage.
  */
 export const useFavoritesStore = create<FavoritesState>()(
   persist(
     (set, get) => ({
       favorites: [],
-
+      
       addFavorite: (id) =>
-        set((state) => ({
-          favorites: [...state.favorites, id],
-        })),
+        set((state) => {
+          if (state.favorites.includes(id)) {
+            return state;
+          }
+
+          return {
+            favorites: [...state.favorites, id],
+          };
+        }),
 
       removeFavorite: (id) =>
         set((state) => ({

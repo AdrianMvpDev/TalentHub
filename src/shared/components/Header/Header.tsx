@@ -1,6 +1,9 @@
-import { View } from 'react-native';
+import { Pressable, View } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
 import { Text } from '../Text';
+
 import { useTheme } from '@shared/hooks';
 
 import { HeaderProps } from './Header.types';
@@ -8,19 +11,41 @@ import { HeaderProps } from './Header.types';
 /**
  * Application screen header.
  */
-export function Header({ title, subtitle, rightComponent }: HeaderProps) {
+export function Header({
+  title,
+  subtitle,
+  backButton = false,
+  rightComponent,
+  paddingTop = true,
+}: HeaderProps) {
+  const navigation = useNavigation();
+
   const { theme } = useTheme();
 
   return (
     <View
       style={{
         flexDirection: 'row',
-        justifyContent: 'space-between',
         alignItems: 'center',
-        paddingTop: theme.spacing.md,
+        paddingTop: paddingTop ? theme.spacing.md : 0,
       }}
     >
-      <View style={{ flex: 1 }}>
+      {backButton && (
+        <Pressable
+          onPress={() => navigation.goBack()}
+          style={{
+            marginRight: theme.spacing.md,
+          }}
+        >
+          <Ionicons name="arrow-back" size={24} color={theme.colors.text} />
+        </Pressable>
+      )}
+
+      <View
+        style={{
+          flex: 1,
+        }}
+      >
         <Text variant="title">{title}</Text>
 
         {subtitle && (

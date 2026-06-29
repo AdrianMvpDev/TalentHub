@@ -8,6 +8,7 @@ export interface Theme {
     background: string;
     surface: string;
     primary: string;
+    accent: string;
     text: string;
     textSecondary: string;
     border: string;

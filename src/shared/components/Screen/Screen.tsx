@@ -20,6 +20,7 @@ export function Screen({
     flexGrow: 1,
     backgroundColor: theme.colors.background,
     paddingHorizontal: padding ? theme.spacing.md : 0,
+    gap: 12,
   };
 
   return (

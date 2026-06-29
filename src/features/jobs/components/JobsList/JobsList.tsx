@@ -44,7 +44,11 @@ export function JobsList({
       windowSize={5}
       removeClippedSubviews
       ListHeaderComponent={
-        <Header title="Jobs" subtitle="Find your next remote opportunity" />
+        <Header
+          title="Jobs"
+          subtitle="Find your next remote opportunity"
+          paddingTop={false}
+        />
       }
       ListEmptyComponent={
         loading ? (
@@ -57,6 +61,7 @@ export function JobsList({
         paddingHorizontal: theme.spacing.md,
         gap: theme.spacing.md,
         flexGrow: 1,
+        paddingBottom: 16,
       }}
     />
   );

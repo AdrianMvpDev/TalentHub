@@ -1,14 +1,12 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 
-import { useTheme } from '@shared/hooks';
-
 import { JobsScreen } from '@features/jobs/screens';
 import { FavoritesScreen } from '@features/favorites/screens';
 
-import { MainTabParamList } from './navigation.types';
+import { useTheme } from '@shared/hooks';
 
-const Tab = createBottomTabNavigator<MainTabParamList>();
+const Tab = createBottomTabNavigator();
 
 /**
  * Main application bottom tabs.
@@ -21,22 +19,46 @@ export function MainTabNavigator() {
       screenOptions={({ route }) => ({
         headerShown: false,
 
-        tabBarActiveTintColor: theme.colors.primary,
-
+        tabBarActiveTintColor: theme.colors.accent,
         tabBarInactiveTintColor: theme.colors.textSecondary,
 
+        lazy: true,
+        freezeOnBlur: true,
+        tabBarHideOnKeyboard: true,
+        animation: 'fade',
+
         tabBarStyle: {
-          height: 72,
-          paddingTop: 8,
-          paddingBottom: 8,
-          backgroundColor: theme.colors.surface,
+          height: 60,
+
           borderTopWidth: 1,
           borderTopColor: theme.colors.border,
+
+          borderTopLeftRadius: 16,
+          borderTopRightRadius: 16,
+
+          overflow: 'hidden',
+
+          elevation: 8,
+
+          shadowColor: '#000',
+          shadowOpacity: 0.08,
+          shadowRadius: 8,
+          shadowOffset: {
+            width: 0,
+            height: -2,
+          },
+        },
+
+        tabBarItemStyle: {
+          height: 60,
+          justifyContent: 'center',
+          alignItems: 'center',
         },
 
         tabBarLabelStyle: {
           fontSize: 12,
           fontWeight: '600',
+          marginBottom: 2,
         },
 
         tabBarIcon: ({ color, size, focused }) => {

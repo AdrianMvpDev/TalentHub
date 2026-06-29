@@ -1,9 +1,7 @@
 export interface FavoritesState {
-  favorites: string[];
+  favorites: number[];
 
-  addFavorite: (id: string) => void;
-
-  removeFavorite: (id: string) => void;
-
-  isFavorite: (id: string) => boolean;
+  addFavorite: (id: number) => void;
+  removeFavorite: (id: number) => void;
+  isFavorite: (id: number) => boolean;
 }

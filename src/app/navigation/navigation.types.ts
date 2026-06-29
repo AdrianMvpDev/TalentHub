@@ -1,3 +1,5 @@
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+
 export type MainTabParamList = {
   Jobs: undefined;
   Favorites: undefined;
@@ -5,7 +7,10 @@ export type MainTabParamList = {
 
 export type RootStackParamList = {
   MainTabs: undefined;
+
   JobDetail: {
-    jobId: string;
+    jobId: number;
   };
 };
+
+export type RootNavigationProp = NativeStackNavigationProp<RootStackParamList>;

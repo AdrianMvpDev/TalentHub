@@ -7,6 +7,13 @@ export const colors = {
     700: '#1E40AF',
   },
 
+  pink: {
+    100: '#FFE4F0',
+    300: '#FF80B5',
+    500: '#FF4F9A',
+    600: '#E63E85',
+  },
+
   gray: {
     50: '#F9FAFB',
     100: '#F3F4F6',

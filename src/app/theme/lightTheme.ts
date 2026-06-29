@@ -1,19 +1,24 @@
 import { borderRadius } from './borderRadius';
+import { colors } from './colors';
 import { shadows } from './shadows';
 import { spacing } from './spacing';
 import { typography } from './typography';
 
 export const lightTheme = {
   colors: {
-    background: '#F8FAFC',
-    surface: '#FFFFFF',
-    primary: '#2563EB',
-    text: '#111827',
-    textSecondary: '#6B7280',
-    border: '#E5E7EB',
-    success: '#22C55E',
-    warning: '#F59E0B',
-    error: '#EF4444',
+    background: colors.gray[50],
+    surface: colors.white,
+
+    primary: colors.blue[500],
+    accent: colors.pink[500],
+
+    text: colors.gray[900],
+    textSecondary: colors.gray[400],
+    border: colors.gray[200],
+
+    success: colors.success,
+    warning: colors.warning,
+    error: colors.error,
   },
 
   spacing,

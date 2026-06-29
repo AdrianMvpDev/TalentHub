@@ -16,8 +16,6 @@ export async function getJobs(params?: {
     query.append('search', params.search);
   }
 
-  console.log(query.toString());
-
   if (params?.category) {
     query.append('category', params.category);
   }
