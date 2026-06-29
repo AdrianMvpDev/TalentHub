@@ -5,6 +5,8 @@ export interface JobsState {
 
   filteredJobs: Job[];
 
+  jobTypes: string[];
+
   loading: boolean;
 
   error: string | null;

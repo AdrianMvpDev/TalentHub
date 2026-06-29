@@ -1,7 +1,11 @@
-import { Category } from '@shared/types';
+export interface FilterChipItem {
+  label: string;
+
+  value: string;
+}
 
 export interface FilterChipsProps {
-  items: Category[];
+  items: FilterChipItem[];
 
   selectedValue: string;
 

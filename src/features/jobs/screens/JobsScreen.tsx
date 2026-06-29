@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 
 import { RootNavigationProp } from '@app/navigation';
 
-import { ErrorView, Loader, Screen, SearchInput } from '@shared/components';
+import { ErrorView, Loader, Screen, SearchInput, Text } from '@shared/components';
 import { FilterChips } from '@shared/components/FilterChips';
 import { useTheme } from '@shared/hooks';
 
@@ -12,6 +12,7 @@ import { useFilters } from '@features/filters';
 
 import { JobsList } from '../components';
 import { useJobs } from '../hooks';
+import { formatJobType } from '@shared/utils';
 
 /**
  * Jobs listing screen.
@@ -29,7 +30,7 @@ export function JobsScreen() {
   /**
    * Jobs state.
    */
-  const { jobs, loading, error, fetchJobs, filterJobs } = useJobs();
+  const { jobs, loading, error, fetchJobs, filterJobs, jobTypes } = useJobs();
 
   /**
    * Filters state.
@@ -43,6 +44,7 @@ export function JobsScreen() {
     setSearch,
     setCategory,
     fetchCategories,
+    setJobType,
   } = useFilters();
 
   /**
@@ -118,14 +120,38 @@ export function JobsScreen() {
     ? `No jobs available in ${selectedCategory}.`
     : 'Try another search.';
 
+  const categoryItems = categories.map((category) => ({
+    label: category.name,
+    value: category.name,
+  }));
+
+  const jobTypeItems = jobTypes.map((type) => ({
+    label: formatJobType(type),
+    value: type,
+  }));
+
   return (
     <Screen padding={false}>
       <SearchInput value={search} onChangeText={setSearch} />
 
+      <Text variant="caption" style={{ paddingHorizontal: 16 }}>
+        Categories
+      </Text>
+
       <FilterChips
-        items={categories}
+        items={categoryItems}
         selectedValue={selectedCategory}
         onSelect={setCategory}
+      />
+
+      <Text variant="caption" style={{ paddingHorizontal: 16 }}>
+        Job type
+      </Text>
+
+      <FilterChips
+        items={jobTypeItems}
+        selectedValue={selectedJobType}
+        onSelect={setJobType}
       />
 
       <JobsList

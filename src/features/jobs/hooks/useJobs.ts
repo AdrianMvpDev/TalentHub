@@ -14,11 +14,14 @@ export function useJobs() {
 
   const filterJobs = useJobsStore((state) => state.filterJobs);
 
+  const jobTypes = useJobsStore((state) => state.jobTypes);
+
   return {
     jobs,
     loading,
     error,
     fetchJobs,
     filterJobs,
+    jobTypes,
   };
 }

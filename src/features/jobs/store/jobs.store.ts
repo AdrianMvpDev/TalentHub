@@ -12,6 +12,8 @@ export const useJobsStore = create<JobsState>((set, get) => ({
 
   filteredJobs: [],
 
+  jobTypes: [],
+
   loading: false,
 
   error: null,
@@ -25,9 +27,12 @@ export const useJobsStore = create<JobsState>((set, get) => ({
 
       const response = await getJobs();
 
+      const jobTypes = [...new Set(response.jobs.map((job) => job.job_type))];
+
       set({
         jobs: response.jobs,
         filteredJobs: response.jobs,
+        jobTypes,
         loading: false,
       });
     } catch (error) {

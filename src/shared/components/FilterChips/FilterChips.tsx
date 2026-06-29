@@ -53,12 +53,12 @@ export function FilterChips({ items, selectedValue, onSelect }: FilterChipsProps
       </Pressable>
 
       {items.map((item) => {
-        const selected = selectedValue === item.name;
+        const selected = selectedValue === item.value;
 
         return (
           <Pressable
-            key={item.id}
-            onPress={() => onSelect(item.name)}
+            key={item.value}
+            onPress={() => onSelect(item.value)}
             style={[
               chipStyle,
               {
@@ -73,7 +73,7 @@ export function FilterChips({ items, selectedValue, onSelect }: FilterChipsProps
               numberOfLines={1}
               color={selected ? '#fff' : undefined}
             >
-              {item.name}
+              {item.label}
             </Text>
           </Pressable>
         );
