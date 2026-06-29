@@ -6,11 +6,12 @@ import { Card, Text, Badge } from '@shared/components';
 import { useTheme } from '@shared/hooks';
 
 import { JobCardProps } from './JobCard.types';
+import { memo } from 'react';
 
 /**
  * Displays a job card.
  */
-export function JobCard({ job, onPress }: JobCardProps) {
+function JobCardComponent({ job, onPress }: JobCardProps) {
   const { theme } = useTheme();
 
   return (
@@ -61,3 +62,5 @@ export function JobCard({ job, onPress }: JobCardProps) {
     </Pressable>
   );
 }
+
+export const JobCard = memo(JobCardComponent);

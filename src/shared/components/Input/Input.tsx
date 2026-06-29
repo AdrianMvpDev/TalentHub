@@ -20,14 +20,7 @@ export function Input({
   const { theme } = useTheme();
 
   return (
-    <View
-      style={[
-        {
-          marginBottom: theme.spacing.md,
-        },
-        containerStyle,
-      ]}
-    >
+    <View style={[containerStyle]}>
       {label && (
         <Text
           variant="caption"
