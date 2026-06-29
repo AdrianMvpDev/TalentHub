@@ -1,5 +1,8 @@
 import { useFavoritesStore } from '../store';
 
+/**
+ * Favorite hook for a single job.
+ */
 export function useFavorite(id: number) {
   const isFavorite = useFavoritesStore((state) => state.isFavorite(id));
 

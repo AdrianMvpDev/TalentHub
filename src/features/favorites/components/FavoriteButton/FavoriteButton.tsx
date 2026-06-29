@@ -4,7 +4,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { useTheme } from '@shared/hooks';
 
 import { FavoriteButtonProps } from './FavoriteButton.types';
-import { useFavorite } from '@features/favorites/hooks/useFavorite';
+import { useFavorite } from '@features/favorites/hooks';
 
 /**
  * Favorite button.

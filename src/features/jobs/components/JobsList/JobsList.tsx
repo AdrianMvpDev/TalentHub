@@ -1,17 +1,29 @@
+import { useCallback } from 'react';
 import { FlatList } from 'react-native';
 
 import { EmptyState, Header, Loader } from '@shared/components';
 
 import { useTheme } from '@shared/hooks';
 
+import { Job } from '@shared/types';
+
 import { JobCard } from '../JobCard';
 
 import { JobsListProps } from './JobsList.types';
-import { useCallback } from 'react';
-import { Job } from '@shared/types';
 
 /**
- * Displays jobs list.
+ * Reusable jobs list component.
+ *
+ * Used by:
+ * - Jobs screen.
+ * - Favorites screen.
+ *
+ * Provides:
+ * - Virtualized rendering.
+ * - Pull to refresh.
+ * - Loading state.
+ * - Empty state.
+ * - Optional header.
  */
 export function JobsList({
   jobs,
@@ -19,9 +31,17 @@ export function JobsList({
   refreshing = false,
   onRefresh,
   onJobPress,
+  title = 'Jobs',
+  subtitle = 'Find your next remote opportunity',
+  emptyTitle = 'No jobs found',
+  emptyDescription = 'Try another search.',
+  showHeader = true,
 }: JobsListProps) {
   const { theme } = useTheme();
 
+  /**
+   * Renders a single job card.
+   */
   const renderItem = useCallback(
     ({ item }: { item: Job }) => (
       <JobCard job={item} onPress={() => onJobPress?.(item)} />
@@ -29,6 +49,9 @@ export function JobsList({
     [onJobPress],
   );
 
+  /**
+   * Stable key extractor.
+   */
   const keyExtractor = useCallback((item: Job) => item.id.toString(), []);
 
   return (
@@ -44,24 +67,22 @@ export function JobsList({
       windowSize={5}
       removeClippedSubviews
       ListHeaderComponent={
-        <Header
-          title="Jobs"
-          subtitle="Find your next remote opportunity"
-          paddingTop={false}
-        />
+        showHeader ? (
+          <Header title={title} subtitle={subtitle} paddingTop={false} />
+        ) : null
       }
       ListEmptyComponent={
         loading ? (
           <Loader />
         ) : (
-          <EmptyState title="No jobs found." description="Try another search." />
+          <EmptyState title={emptyTitle} description={emptyDescription} />
         )
       }
       contentContainerStyle={{
         paddingHorizontal: theme.spacing.md,
         gap: theme.spacing.md,
         flexGrow: 1,
-        paddingBottom: 16,
+        paddingBottom: theme.spacing.md,
       }}
     />
   );

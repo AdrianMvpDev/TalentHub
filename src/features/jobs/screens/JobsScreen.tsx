@@ -8,7 +8,6 @@ import { useJobs } from '../hooks';
 
 import { useNavigation } from '@react-navigation/native';
 import { RootNavigationProp } from '@app/navigation';
-import { View } from 'react-native';
 
 /**
  * Jobs listing screen.

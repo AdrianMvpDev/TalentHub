@@ -14,7 +14,7 @@ export function Badge({ label, variant = 'primary' }: BadgeProps) {
   const backgroundColor = {
     primary: theme.colors.primary,
     secondary: theme.colors.surface,
-    success: '#22C55E',
+    success: theme.colors.success,
   };
 
   return (
