@@ -12,6 +12,8 @@ export function useFilters() {
 
   const categories = useFiltersStore((state) => state.categories);
 
+  const loadingCategories = useFiltersStore((state) => state.loadingCategories);
+
   const setSearch = useFiltersStore((state) => state.setSearch);
 
   const setCategory = useFiltersStore((state) => state.setCategory);
@@ -25,6 +27,7 @@ export function useFilters() {
     selectedCategory,
     selectedJobType,
     categories,
+    loadingCategories,
     setSearch,
     setCategory,
     setJobType,

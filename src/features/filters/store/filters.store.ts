@@ -7,7 +7,7 @@ import { FiltersState } from './filters.types';
 /**
  * Global filters state.
  */
-export const useFiltersStore = create<FiltersState>((set) => ({
+export const useFiltersStore = create<FiltersState>((set, get) => ({
   search: '',
 
   selectedCategory: '',
@@ -34,6 +34,16 @@ export const useFiltersStore = create<FiltersState>((set) => ({
     }),
 
   fetchCategories: async () => {
+    /**
+     * Categories rarely change.
+     *
+     * Avoid unnecessary API requests when they
+     * have already been loaded.
+     */
+    if (get().categories.length > 0) {
+      return;
+    }
+
     try {
       set({
         loadingCategories: true,
