@@ -56,7 +56,7 @@ export function MainTabNavigator() {
         name="Jobs"
         component={JobsScreen}
         options={{
-          title: 'Empleos',
+          title: 'Jobs',
         }}
       />
 
@@ -64,7 +64,7 @@ export function MainTabNavigator() {
         name="Favorites"
         component={FavoritesScreen}
         options={{
-          title: 'Favoritos',
+          title: 'Favorites',
         }}
       />
     </Tab.Navigator>

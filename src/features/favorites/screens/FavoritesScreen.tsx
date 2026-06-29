@@ -5,13 +5,10 @@ import { EmptyState, Header, Screen } from '@shared/components';
  */
 export function FavoritesScreen() {
   return (
-    <Screen>
-      <Header title="Favoritos" />
+    <Screen padding={false}>
+      <Header title="Favorites" />
 
-      <EmptyState
-        title="Sin favoritos"
-        description="Los empleos guardados aparecerán aquí."
-      />
+      <EmptyState title="No favorites" description="Your saved jobs will appear here." />
     </Screen>
   );
 }

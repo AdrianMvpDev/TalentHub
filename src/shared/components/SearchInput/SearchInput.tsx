@@ -30,7 +30,7 @@ export function SearchInput(props: SearchInputProps) {
       </View>
 
       <Input
-        placeholder="Buscar empleos..."
+        placeholder="Search for jobs..."
         style={{
           paddingLeft: 44,
         }}

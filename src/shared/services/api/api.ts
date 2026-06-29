@@ -11,7 +11,7 @@ class ApiClient {
       throw new Error(`HTTP ${response.status}`);
     }
 
-    return response.json();
+    return (await response.json()) as T;
   }
 }
 

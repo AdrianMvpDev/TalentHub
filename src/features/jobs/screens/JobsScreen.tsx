@@ -1,32 +1,35 @@
 import { useEffect } from 'react';
 
-import { Header, Screen, SearchInput, Loader, ErrorView } from '@shared/components';
+import { Screen, ErrorView, SearchInput } from '@shared/components';
 
-import { useJobsStore } from '../store';
+import { JobsList } from '../components';
+
+import { useJobs } from '../hooks';
 
 /**
  * Jobs listing screen.
  */
 export function JobsScreen() {
-  const { loading, error, fetchJobs } = useJobsStore();
+  const { jobs, loading, error, search, setSearch, fetchJobs } = useJobs();
 
   useEffect(() => {
-    fetchJobs();
+    void fetchJobs();
   }, [fetchJobs]);
-
-  if (loading) {
-    return <Loader fullScreen />;
-  }
 
   if (error) {
     return <ErrorView message={error} onRetry={fetchJobs} />;
   }
 
   return (
-    <Screen>
-      <Header title="Empleos" subtitle="Encuentra tu próxima oportunidad" />
+    <Screen padding={false}>
+      <SearchInput value={search} onChangeText={setSearch} />
 
-      <SearchInput />
+      <JobsList
+        jobs={jobs}
+        loading={loading}
+        refreshing={loading}
+        onRefresh={fetchJobs}
+      />
     </Screen>
   );
 }

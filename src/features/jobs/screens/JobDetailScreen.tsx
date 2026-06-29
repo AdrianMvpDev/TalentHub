@@ -6,7 +6,7 @@ import { Header, Screen, Text } from '@shared/components';
 export function JobDetailScreen() {
   return (
     <Screen>
-      <Header title="Detalle del empleo" />
+      <Header title="Job Details" />
 
       <Text>Job detail screen</Text>
     </Screen>

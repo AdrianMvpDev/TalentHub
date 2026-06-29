@@ -7,12 +7,16 @@ import { JobsState } from './jobs.types';
 /**
  * Global jobs state.
  */
-export const useJobsStore = create<JobsState>((set) => ({
+export const useJobsStore = create<JobsState>((set, get) => ({
   jobs: [],
+
+  filteredJobs: [],
 
   loading: false,
 
   error: null,
+
+  search: '',
 
   fetchJobs: async () => {
     try {
@@ -25,6 +29,7 @@ export const useJobsStore = create<JobsState>((set) => ({
 
       set({
         jobs: response.jobs,
+        filteredJobs: response.jobs,
         loading: false,
       });
     } catch (error) {
@@ -35,6 +40,38 @@ export const useJobsStore = create<JobsState>((set) => ({
         loading: false,
       });
     }
+  },
+
+  setSearch: (value) => {
+    set({
+      search: value,
+    });
+
+    get().filterJobs();
+  },
+
+  filterJobs: () => {
+    const { jobs, search } = get();
+
+    const normalizedSearch = search.trim().toLowerCase();
+
+    if (!normalizedSearch) {
+      set({
+        filteredJobs: jobs,
+      });
+
+      return;
+    }
+
+    const filteredJobs = jobs.filter(
+      (job) =>
+        job.title.toLowerCase().includes(normalizedSearch) ||
+        job.company_name.toLowerCase().includes(normalizedSearch),
+    );
+
+    set({
+      filteredJobs,
+    });
   },
 
   clearError: () =>
