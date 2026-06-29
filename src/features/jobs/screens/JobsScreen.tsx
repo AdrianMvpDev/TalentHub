@@ -8,6 +8,7 @@ import { useJobs } from '../hooks';
 
 import { useNavigation } from '@react-navigation/native';
 import { RootNavigationProp } from '@app/navigation';
+import { useFilters } from '@features/filters';
 
 /**
  * Jobs listing screen.
@@ -15,11 +16,35 @@ import { RootNavigationProp } from '@app/navigation';
 export function JobsScreen() {
   const navigation = useNavigation<RootNavigationProp>();
 
-  const { jobs, loading, error, search, setSearch, fetchJobs } = useJobs();
+  const { jobs, loading, error, fetchJobs, filterJobs } = useJobs();
 
+  const { search, selectedCategory, selectedJobType, setSearch, fetchCategories } =
+    useFilters();
+
+  /**
+   * Initial jobs load.
+   */
   useEffect(() => {
     void fetchJobs();
-  }, [fetchJobs]);
+  }, []);
+
+  /**
+   * Loads categories.
+   */
+  useEffect(() => {
+    void fetchCategories();
+  }, []);
+
+  /**
+   * Applies local filters.
+   */
+  useEffect(() => {
+    filterJobs({
+      search,
+      category: selectedCategory,
+      jobType: selectedJobType,
+    });
+  }, [search, selectedCategory, selectedJobType]);
 
   if (error) {
     return <ErrorView message={error} onRetry={fetchJobs} />;
@@ -31,8 +56,8 @@ export function JobsScreen() {
 
       <JobsList
         jobs={jobs}
-        refreshing={loading}
         loading={loading}
+        refreshing={loading}
         onRefresh={fetchJobs}
         onJobPress={(job) =>
           navigation.navigate('JobDetail', {

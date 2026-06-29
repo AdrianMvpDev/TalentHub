@@ -16,8 +16,6 @@ export const useJobsStore = create<JobsState>((set, get) => ({
 
   error: null,
 
-  search: '',
-
   fetchJobs: async () => {
     try {
       set({
@@ -42,32 +40,21 @@ export const useJobsStore = create<JobsState>((set, get) => ({
     }
   },
 
-  setSearch: (value) => {
-    set({
-      search: value,
-    });
-
-    get().filterJobs();
-  },
-
-  filterJobs: () => {
-    const { jobs, search } = get();
-
+  filterJobs: ({ search, category, jobType }) => {
     const normalizedSearch = search.trim().toLowerCase();
 
-    if (!normalizedSearch) {
-      set({
-        filteredJobs: jobs,
-      });
-
-      return;
-    }
-
-    const filteredJobs = jobs.filter(
-      (job) =>
+    const filteredJobs = get().jobs.filter((job) => {
+      const matchesSearch =
+        !normalizedSearch ||
         job.title.toLowerCase().includes(normalizedSearch) ||
-        job.company_name.toLowerCase().includes(normalizedSearch),
-    );
+        job.company_name.toLowerCase().includes(normalizedSearch);
+
+      const matchesCategory = !category || job.category === category;
+
+      const matchesJobType = !jobType || job.job_type === jobType;
+
+      return matchesSearch && matchesCategory && matchesJobType;
+    });
 
     set({
       filteredJobs,

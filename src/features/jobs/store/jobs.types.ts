@@ -9,13 +9,9 @@ export interface JobsState {
 
   error: string | null;
 
-  search: string;
-
   fetchJobs: () => Promise<void>;
 
-  setSearch: (value: string) => void;
-
-  filterJobs: () => void;
+  filterJobs: (params: { search: string; category: string; jobType: string }) => void;
 
   clearError: () => void;
 }

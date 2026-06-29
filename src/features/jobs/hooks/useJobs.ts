@@ -10,18 +10,15 @@ export function useJobs() {
 
   const error = useJobsStore((state) => state.error);
 
-  const search = useJobsStore((state) => state.search);
-
   const fetchJobs = useJobsStore((state) => state.fetchJobs);
 
-  const setSearch = useJobsStore((state) => state.setSearch);
+  const filterJobs = useJobsStore((state) => state.filterJobs);
 
   return {
     jobs,
     loading,
     error,
-    search,
     fetchJobs,
-    setSearch,
+    filterJobs,
   };
 }
