@@ -7,6 +7,7 @@ import { useTheme } from '@shared/hooks';
 
 import { JobCardProps } from './JobCard.types';
 import { memo } from 'react';
+import { formatDate, formatJobType } from '@shared/utils';
 
 /**
  * Displays a job card.
@@ -49,12 +50,20 @@ function JobCardComponent({ job, onPress }: JobCardProps) {
               {job.candidate_required_location}
             </Text>
 
+            <Text variant="caption" color={theme.colors.textSecondary}>
+              {formatDate(job.publication_date)}
+            </Text>
+
             <View
               style={{
+                flexDirection: 'row',
+                gap: theme.spacing.sm,
                 marginTop: theme.spacing.sm,
               }}
             >
-              <Badge label={job.job_type} />
+              <Badge label={formatJobType(job.job_type)} />
+
+              <Badge label={job.category} />
             </View>
           </View>
         </View>

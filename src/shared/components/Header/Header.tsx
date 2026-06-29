@@ -17,7 +17,7 @@ export function Header({ title, subtitle, rightComponent }: HeaderProps) {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        paddingVertical: theme.spacing.md,
+        paddingTop: theme.spacing.md,
       }}
     >
       <View style={{ flex: 1 }}>
