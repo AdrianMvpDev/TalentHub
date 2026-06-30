@@ -22,11 +22,6 @@ export function MainTabNavigator() {
         tabBarActiveTintColor: theme.colors.accent,
         tabBarInactiveTintColor: theme.colors.textSecondary,
 
-        lazy: true,
-        freezeOnBlur: true,
-        tabBarHideOnKeyboard: true,
-        animation: 'fade',
-
         tabBarStyle: {
           height: 60,
 

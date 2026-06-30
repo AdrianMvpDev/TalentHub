@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 import { useNavigation } from '@react-navigation/native';
 
@@ -13,6 +13,8 @@ import { useFilters } from '@features/filters';
 import { JobsList } from '../components';
 import { useJobs } from '../hooks';
 import { formatJobType } from '@shared/utils';
+import { Job } from '@shared/types';
+import { FlatList } from 'react-native';
 
 /**
  * Jobs listing screen.
@@ -24,6 +26,8 @@ import { formatJobType } from '@shared/utils';
  */
 export function JobsScreen() {
   const navigation = useNavigation<RootNavigationProp>();
+
+  const flatListRef = useRef<FlatList<Job>>(null);
 
   const { theme } = useTheme();
 
@@ -54,6 +58,13 @@ export function JobsScreen() {
    * jobs and categories have finished loading.
    */
   const isLoading = loading || loadingCategories;
+
+  useEffect(() => {
+    flatListRef.current?.scrollToOffset({
+      offset: 0,
+      animated: false,
+    });
+  }, [search, selectedCategory, selectedJobType]);
 
   /**
    * Initial screen data.
@@ -161,6 +172,7 @@ export function JobsScreen() {
         onRefresh={handleRefresh}
         emptyTitle={emptyTitle}
         emptyDescription={emptyDescription}
+        flatListRef={flatListRef}
         onJobPress={(job) =>
           navigation.navigate('JobDetail', {
             jobId: job.id,

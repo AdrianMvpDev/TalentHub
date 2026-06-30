@@ -1,3 +1,6 @@
+import { RefObject } from 'react';
+import { FlatList } from 'react-native';
+
 import { Job } from '@shared/types';
 
 export interface JobsListProps {
@@ -50,4 +53,10 @@ export interface JobsListProps {
    * Controls whether the header is rendered.
    */
   showHeader?: boolean;
+
+  /**
+   * Reference used to control the list
+   * from parent components.
+   */
+  flatListRef?: RefObject<FlatList<Job> | null>;
 }
