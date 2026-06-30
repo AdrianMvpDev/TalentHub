@@ -36,6 +36,7 @@ export function JobsList({
   emptyTitle = 'No jobs found',
   emptyDescription = 'Try another search.',
   showHeader = true,
+  flatListRef,
 }: JobsListProps) {
   const { theme } = useTheme();
 
@@ -57,6 +58,7 @@ export function JobsList({
   return (
     <FlatList
       data={jobs}
+      ref={flatListRef}
       keyExtractor={keyExtractor}
       renderItem={renderItem}
       refreshing={refreshing}
