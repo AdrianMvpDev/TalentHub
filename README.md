@@ -1,11 +1,11 @@
-<h1 align="center">🚀 Remote Jobs App</h1>
+<h1 align="center">Remote Jobs App</h1>
 
 <p align="center">
 A modern mobile application built with <strong>Expo</strong>, <strong>React Native</strong>, <strong>TypeScript</strong> and <strong>Zustand</strong>.
 </p>
 
 <p align="center">
-Technical Assessment for <strong>Redarbor</strong>
+Mobile Technical Assessment - <strong>Redarbor</strong>
 </p>
 
 <p align="center">
@@ -20,7 +20,7 @@ Technical Assessment for <strong>Redarbor</strong>
 
 ---
 
-# 📚 Contents
+# Contents
 
 - Demo
 - Highlights
@@ -39,7 +39,7 @@ Technical Assessment for <strong>Redarbor</strong>
 
 ---
 
-# 🎬 Demo
+# Demo
 
 The following animation demonstrates the main application flow:
 
@@ -56,32 +56,32 @@ The following animation demonstrates the main application flow:
 
 ---
 
-# ✨ Highlights
+# Highlights
 
-- 🏗 Feature-first architecture
-- 🎨 Reusable design system
-- ⚡ Client-side filtering
-- ❤️ Persistent favorites
-- 📱 Expo SDK 52
-- 🔥 Zustand state management
-- 🧩 Modular architecture
-- ♻️ Reusable UI components
+- Feature-first architecture
+- Reusable design system
+- Client-side filtering
+- Persistent favorites
+- Expo SDK 52
+- Zustand state management
+- Modular architecture
+- Reusable UI components
 
 ---
 
 # 📸 Screenshots
 
-| Home                                      | Detail                                      |
-| ----------------------------------------- | ------------------------------------------- |
+| Home                                        | Detail                                        |
+| ------------------------------------------- | --------------------------------------------- |
 | <img src="./assets/home.webp" width="260"/> | <img src="./assets/detail.webp" width="260"/> |
 
-| Favorites                                      | Filters                                      |
-| ---------------------------------------------- | -------------------------------------------- |
+| Favorites                                        | Filters                                        |
+| ------------------------------------------------ | ---------------------------------------------- |
 | <img src="./assets/favorites.webp" width="260"/> | <img src="./assets/filters.webp" width="260"/> |
 
 ---
 
-# ✨ Features
+# Features
 
 ## Job Listing
 
@@ -131,7 +131,7 @@ The following animation demonstrates the main application flow:
 
 ---
 
-# 📦 API
+# API
 
 This application consumes the public Remotive API.
 
@@ -215,7 +215,7 @@ Contains reusable code shared across the application.
 
 ---
 
-# 🏗 Architecture Decisions
+# Architecture Decisions
 
 The project was intentionally structured with long-term scalability in mind.
 
@@ -306,7 +306,7 @@ Examples
 
 ---
 
-# 📋 Requirements
+# Requirements
 
 - Node.js 20+
 - npm
@@ -315,21 +315,28 @@ Examples
 
 ---
 
-# 🚀 Getting Started
+# Getting Started
 
-Clone the repository
+## Clone repository
 
 ```bash
-git clone https://github.com/AdrianMvpDev/remote-jobs-app.git
+git clone <repository-url>
+cd remote-jobs-app
 ```
 
-Install dependencies
+## Install dependencies
 
 ```bash
 npm install
 ```
 
-Start Expo
+## Configure environment variables
+
+```bash
+cp .env.example .env
+```
+
+## Start Expo
 
 ```bash
 npx expo start
@@ -341,9 +348,29 @@ Run on
 - iOS Simulator
 - Expo Go
 
+## Environment Variables
+
+This project uses environment variables for configuration.
+
+Create a `.env` file in the project root using the provided example:
+
+```bash
+cp .env.example .env
+```
+
+Or simply duplicate `.env.example` and rename it to `.env`.
+
+Current variables:
+
+```env
+EXPO_PUBLIC_API_URL=https://remotive.com/api
+```
+
+Expo automatically exposes variables prefixed with `EXPO_PUBLIC_`.
+
 ---
 
-# 📜 Available Scripts
+# Available Scripts
 
 | Script          | Description         |
 | --------------- | ------------------- |
@@ -355,7 +382,7 @@ Run on
 
 ---
 
-# 🚀 Future Improvements
+# Future Improvements
 
 Possible future enhancements include:
 
@@ -370,7 +397,7 @@ Possible future enhancements include:
 
 ---
 
-# 📌 Notes
+# Notes
 
 This project was developed as part of the Redarbor Frontend Technical Assessment.
 
