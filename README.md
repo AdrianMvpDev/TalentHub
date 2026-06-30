@@ -1,4 +1,4 @@
-<h1 align="center">Remote Jobs App</h1>
+<h1 align="center">TalentHub App</h1>
 
 <p align="center">
 A modern mobile application built with <strong>Expo</strong>, <strong>React Native</strong>, <strong>TypeScript</strong> and <strong>Zustand</strong>.
@@ -118,7 +118,7 @@ The following animation demonstrates the main application flow:
 
 ---
 
-# 🛠 Tech Stack
+# Tech Stack
 
 - Expo SDK 52
 - React Native
