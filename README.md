@@ -5,7 +5,7 @@ A modern mobile application built with <strong>Expo</strong>, <strong>React Nati
 </p>
 
 <p align="center">
-Mobile Technical Assessment - <strong>Redarbor</strong>
+React Native Technical Assessment - <strong>Redarbor</strong>
 </p>
 
 <p align="center">
@@ -14,7 +14,6 @@ Mobile Technical Assessment - <strong>Redarbor</strong>
 ![React Native](https://img.shields.io/badge/React%20Native-0.76-61DAFB?logo=react)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?logo=typescript)
 ![Zustand](https://img.shields.io/badge/Zustand-State-orange)
-![License](https://img.shields.io/badge/license-MIT-green)
 
 </p>
 
@@ -321,7 +320,7 @@ Examples
 
 ```bash
 git clone <repository-url>
-cd remote-jobs-app
+cd TalentHub
 ```
 
 ## Install dependencies
@@ -414,12 +413,5 @@ Besides implementing the requested features, special attention was given to:
 
 ---
 
-# 📄 License
-
-MIT
-
----
-
 <p align="center">
-Built with ❤️ using Expo, React Native and TypeScript.
-</p>
+Built with ❤️ for the Redarbor Technical Assessment.</p>
